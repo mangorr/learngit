@@ -1,0 +1,45 @@
+克隆远程代码库到本地git clone --recursive git@git.jd.com:rec/searchplatform.git
+
+当需要同时开发多个分支需求的时候，创建不同的本地分支，每一个本地分支代表一个需求git checkout -b <branchName>，如git checkout -b dev
+
+查看所有本地分支git branch -vv
+
+切换到本地dev分支# 注意，每次切换分支之前，请用git commit(稍后讲解)保存当前修改git checkout dev
+
+强制当前所在分支同远程代码库的内容同origin/master一样git fetch origin mastergit reset --hard origin/master
+
+当修改了内容后(以修改readme为例)git statusgit add <file> # <file>支持通配符.，如git add README.md或git add .git status
+
+git commit -m "Issue618: Modify the README.md" #这个命令会在这个分支创建一个新的commit或 git commit --amend # 这个会继续在之前这个分支的commit
+
+查看当前已经commit的内容修改了哪些文件git log -1 --name-only --oneline
+
+这时候origin/master可能已经merge了很多东西，提交git-review之前需要rebasegit fetch origin mastergit rebase origin/master
+
+提交到gerrit上给大家reviewgit-review -b origin-branch local-branch
+
+删除本地分支devgit branch -D dev
+
+解决git rebase时候的冲突git status 发现冲突文件去代码文件解决冲突git add <冲突文件名字> # one by one, 切记不要git add .git rebase –continue
+
+# 设置用户
+
+ssh-keygen -t rsa -C "mogami@jd.com"ssh -T git@git.jd.com
+
+git config --local user.name erp名字git config --local user.email 邮箱@jd.com
+
+
+
+在已有的patch追加修改：
+
+在gerrit上找到自己提交的准备修改的patch，右上角download，复制checkout链接；
+
+在本地对应项目的目录下checkout到准备修改的patch;
+
+在此分支上进行修改；
+
+git add -u  # 添加修改
+
+git commit --amend # 追加commit 这里可以修改commt message
+
+git-review  # 提交修改到gerrit 默认master分支
