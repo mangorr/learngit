@@ -44,3 +44,40 @@ git add -u  # 添加修改
 git commit --amend # 追加commit 这里可以修改commt message
 
 git-review  # 提交修改到gerrit 默认master分支
+
+
+1.Your initial workflow should set up a remote branch that is tracked:
+
+git checkout main
+git pull
+git checkout -b my-new-feature
+... write some code here ...
+git add .
+git commit -m 'initial working version of my new feature'
+git push -u origin my-new-feature
+
+2.The next day you add more code and push to your remote branch:
+
+... write some code here ...
+git add .
+git commit -m 'added this cool code...'
+git push
+
+3.Before making a Pull Request always get the latest changes from master:
+
+git checkout main
+git pull
+git checkout my-new-feature
+git merge main
+... fix any merge conflicts here ...
+git add .
+git commit -m 'merged updates from master'
+git push
+
+4. After your Pull Request is merged you must get the latest changes from master:
+
+git checkout master
+git pull
+git branch -d my-old-feature
+git checkout -b my-new-feature
+
