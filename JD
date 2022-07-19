@@ -1,3 +1,7 @@
+Generate SSH key using ssh-keygen -t rsa -b 4096 -C "your_email@example.com".
+Copy the output of cat id_rsa.pub
+Paste the above copied outpur into your Github profile -> Settings -> SSH and GPG Keys -> Add new SSH key
+
 克隆远程代码库到本地git clone --recursive git@git.jd.com:rec/searchplatform.git
 
 当需要同时开发多个分支需求的时候，创建不同的本地分支，每一个本地分支代表一个需求git checkout -b <branchName>，如git checkout -b dev
