@@ -1,4 +1,4 @@
-Generate SSH key using ssh-keygen -t rsa -b 4096 -C "your_email@example.com".
+Generate SSH key using : ssh-keygen -t rsa -b 4096 -C "your_email@example.com".
 Copy the output of cat id_rsa.pub
 Paste the above copied outpur into your Github profile -> Settings -> SSH and GPG Keys -> Add new SSH key
 
