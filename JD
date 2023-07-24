@@ -75,7 +75,7 @@ git push -u origin my-new-feature
 ... write some code here ...
 git add .
 git commit -m 'added this cool code...'
-git push
+git push / git push -u origin r23.2.2/yiran.ma/VCRM-2877
 
 3.Before making a Pull Request always get the latest changes from master:
 
