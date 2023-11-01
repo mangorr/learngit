@@ -95,3 +95,19 @@ git pull
 git branch -d my-old-feature
 git checkout -b my-new-feature
 
+
+5. git revert when there're issues
+git checkout develop
+git log, get the commit id
+git revert -m1 9280813676e3ec268845205870fc76e965454fa1
+revert commitment will be labelled as revert
+careful : git push, then develop branch is clean
+
+git reset --hard HEAD^
+git pull
+
+
+
+
+
+
